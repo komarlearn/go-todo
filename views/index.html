@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Todo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/htmx.min.js"></script>
+</head>
+
+<body>
+    <div class="mx-auto max-w-lg text-center">
+        <h1 class="text-3xl font-bold sm:text-4xl">Home by komar Todo</h1>
+    </div>
+    <a class="group inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
+        href="/create">
+        <span class="block rounded-full bg-white px-8 py-3 text-sm font-medium group-hover:bg-transparent">
+            Add Todo Keinginan
+        </span>
+    </a>
+    <div class="relative flex justify-center overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-auto text-sm text-left rtl:text-right text-green-500 dark:text-green-400">
+            <thead class="text-xs text-purple-700 dark:text-purple-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">Title</th>
+                    <th scope="col" class="px-6 py-3">Description</th>
+                    <th scope="col" class="px-6 py-3">CreatedAt</th>
+                    <th scope="col" class="px-6 py-3">UpdatedAt</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .todos}}
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-6 py-4">{{.Title}}</td>
+                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                        {{.Description}}
+                    </td>
+                    <td class="px-6 py-4">{{.CreatedAt}}</td>
+                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                        {{.UpdatedAt}}
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+    <button hx-get="/create ">
+        Click Me!
+    </button>
+    <img src="/assets/img/loading.gif" alt="loading...">
+</body>
+
+</html>
